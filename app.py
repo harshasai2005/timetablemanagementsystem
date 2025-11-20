@@ -8,8 +8,8 @@ app.secret_key = "supersecretkey123"  # REQUIRED for login sessions
 
 # Configure the database URI. Using SQLite for local development flexibility.
 # NOTE: If you switch back to PostgreSQL, uncomment your original line:
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword123@localhost:5432/timetabledb'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///timetable.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://myuser:mypassword123@localhost:5432/timetabledb'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///timetable.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
