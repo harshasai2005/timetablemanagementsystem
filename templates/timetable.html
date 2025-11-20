@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}View Timetable{% endblock %}
+
+{% block content %}
+<h1 style="font-size: 2rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Current Class Timetable</h1>
+<p style="color: #6b7280; margin-bottom: 2rem;">Generated Schedule for the Academic Week. Last updated: Today.</p>
+
+<div style="overflow-x: auto; background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead style="background-color: #e5e7eb; color: #1f2937;">
+            <tr>
+                <th style="padding: 1rem; text-align: left; border: 1px solid #d1d5db; font-weight: 600;">Day</th>
+                {% for hour in range(9, 13) %} <!-- Displaying 9:00, 10:00, 11:00, 12:00 for simplicity -->
+                <th style="padding: 1rem; text-align: center; border: 1px solid #d1d5db; font-weight: 600;">{{ hour }}:00</th>
+                {% endfor %}
+                <!-- Add more headers for other hours if needed (e.g., 13:00 to 16:00) -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in timetable %}
+            <tr style="border-bottom: 1px solid #d1d5db; transition: background-color 0.1s;" onmouseover="this.style.backgroundColor='#f9fafb'" onmouseout="this.style.backgroundColor='white'">
+                <td style="padding: 1rem; border: 1px solid #d1d5db; font-weight: 600; background-color: #f3f4f6;">{{ row.day }}</td>
+                <td style="padding: 1rem; border: 1px solid #d1d5db; text-align: center;">{{ row["9:00"] | default('Free') }}</td>
+                <td style="padding: 1rem; border: 1px solid #d1d5db; text-align: center;">{{ row["10:00"] | default('Free') }}</td>
+                <td style="padding: 1rem; border: 1px solid #d1d5db; text-align: center;">{{ row["11:00"] | default('Free') }}</td>
+                <td style="padding: 1rem; border: 1px solid #d1d5db; text-align: center; background-color: #fee2e2;">{{ row["12:00"] | default('Lunch') }}</td>
+                <!-- Add more cells for other hours -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div style="margin-top: 2rem;">
+    <p style="font-style: italic; color: #9ca3af;">Note: This data is currently dummy data. Full integration with the SQLAlchemy models is required for dynamic generation.</p>
+</div>
+{% endblock %}

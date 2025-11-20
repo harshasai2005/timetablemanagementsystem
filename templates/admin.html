@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Management{% endblock %}
+
+{% block content %}
+<h1 style="font-size: 2rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Admin Panel</h1>
+<p style="color: #6b7280; margin-bottom: 2rem;">Manage the resources and trigger the timetable generation process.</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+    <!-- Resource Management -->
+    <div style="background-color: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);">
+        <h3 style="font-size: 1.25rem; font-weight: 600; color: #3b82f6; margin-bottom: 1rem;">Resource Management</h3>
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #4b5563; text-decoration: none; font-weight: 500;">Manage Faculty & Availability</a></li>
+            <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #4b5563; text-decoration: none; font-weight: 500;">Manage Courses & Enrollment</a></li>
+            <li style="margin-bottom: 0.75rem;"><a href="#" style="color: #4b5563; text-decoration: none; font-weight: 500;">Manage Rooms & Capacity</a></li>
+        </ul>
+    </div>
+
+    <!-- Timetable Generation -->
+    <div style="background-color: white; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); text-align: center;">
+        <h3 style="font-size: 1.25rem; font-weight: 600; color: #10b981; margin-bottom: 1rem;">Generate Timetable</h3>
+        <p style="color: #6b7280; margin-bottom: 1.5rem;">Click the button below to run the scheduling algorithm based on current data constraints.</p>
+        <form method="POST" action="{{ url_for('generate') }}">
+            <button type="submit" 
+                    style="padding: 0.75rem 2rem; background-color: #10b981; color: white; border: none; border-radius: 0.375rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s;"
+                    onmouseover="this.style.backgroundColor='#059669'" onmouseout="this.style.backgroundColor='#10b981'">
+                Generate New Timetable
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

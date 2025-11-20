@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 3rem auto; padding: 2rem; background-color: white; border-radius: 0.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);">
+    <h2 style="font-size: 1.5rem; font-weight: 600; text-align: center; margin-bottom: 1.5rem;">Create a New Account</h2>
+    
+    <form method="POST" action="{{ url_for('register') }}">
+        <div style="margin-bottom: 1rem;">
+            <label for="username" style="display: block; color: #4b5563; margin-bottom: 0.5rem;">Username</label>
+            <input type="text" id="username" name="username" required 
+                   style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.375rem; box-sizing: border-box;"
+                   placeholder="Choose a username">
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label for="email" style="display: block; color: #4b5563; margin-bottom: 0.5rem;">Email</label>
+            <input type="email" id="email" name="email" required 
+                   style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.375rem; box-sizing: border-box;"
+                   placeholder="Enter your email">
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+            <label for="password" style="display: block; color: #4b5563; margin-bottom: 0.5rem;">Password</label>
+            <input type="password" id="password" name="password" required 
+                   style="width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.375rem; box-sizing: border-box;"
+                   placeholder="Create a password">
+        </div>
+        
+        <button type="submit" 
+                style="width: 100%; padding: 0.75rem; background-color: #10b981; color: white; border: none; border-radius: 0.375rem; font-weight: 600; cursor: pointer; transition: background-color 0.2s;"
+                onmouseover="this.style.backgroundColor='#059669'" onmouseout="this.style.backgroundColor='#10b981'">
+            Register
+        </button>
+    </form>
+    
+    <p style="text-align: center; margin-top: 1.5rem; font-size: 0.875rem; color: #6b7280;">
+        Already have an account? <a href="{{ url_for('login') }}" style="color: #3b82f6; text-decoration: none; font-weight: 600;">Log in here</a>
+    </p>
+</div>
+{% endblock %}
